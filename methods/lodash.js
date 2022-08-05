@@ -1,4 +1,5 @@
 const _ = {
+  // chunk()
   chunk: (array, size = 1) => {
     let chunks = []
     const timesArr =
@@ -27,6 +28,17 @@ const _ = {
     }
 
     return chunks
+  },
+
+  // compact()
+  compact: (array) => {
+    let newArr = []
+    for (let i = 0; i < array.length; i++) {
+      if (array[i]) {
+        newArr[newArr.length] = array[i]
+      }
+    }
+    return newArr
   },
 }
 
