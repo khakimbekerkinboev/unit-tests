@@ -1,0 +1,25 @@
+{
+  "name": "khakimbekerkinboev-jsfeen2022",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rolling-scopes-school/khakimbekerkinboev-JSFEEN2022.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rolling-scopes-school/khakimbekerkinboev-JSFEEN2022/issues"
+  },
+  "homepage": "https://github.com/rolling-scopes-school/khakimbekerkinboev-JSFEEN2022#readme",
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
