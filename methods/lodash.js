@@ -40,6 +40,33 @@ const _ = {
     }
     return newArr
   },
+
+  // drop()
+  drop: (array, n = 1) => {
+    let newArr = []
+
+    for (let i = n; i < array.length; i++) {
+      newArr[newArr.length] = array[i]
+    }
+
+    return newArr
+  },
+
+  // dropWhile()
+  dropWhile: (array, predicate = _.identity) => {
+    let newArr = []
+
+    for (let i = 0; i < array.length; i++) {
+      if (!predicate(array[i])) {
+        for (let j = i; j < array.length; j++) {
+          newArr[newArr.length] = array[j]
+        }
+        break
+      }
+    }
+
+    return newArr
+  },
 }
 
 module.exports = _
