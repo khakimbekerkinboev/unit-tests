@@ -55,18 +55,24 @@ const _ = {
   // dropWhile()
   dropWhile: (array, predicate = _.identity) => {
     let newArr = []
-
-    for (let i = 0; i < array.length; i++) {
-      if (!predicate(array[i])) {
-        for (let j = i; j < array.length; j++) {
-          newArr[newArr.length] = array[j]
+    if (array) {
+      for (let i = 0; i < array.length; i++) {
+        if (!predicate(array[i])) {
+          for (let j = i; j < array.length; j++) {
+            newArr[newArr.length] = array[j]
+          }
+          break
         }
-        break
       }
     }
 
     return newArr
   },
-}
 
+  // identity() assisting dropWhile()
+  identity: (...args) => {
+    return args[0]
+  },
+}
+console.log(_.dropWhile())
 module.exports = _
