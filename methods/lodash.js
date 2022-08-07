@@ -68,11 +68,13 @@ const _ = {
 
     return newArr
   },
-  // identity() assisting dropWhile()
+
+  // identity()
   identity: (...args) => {
     return args[0]
   },
 
+  // take()
   take: (array, n = 1) => {
     let newArr = []
 
@@ -82,6 +84,19 @@ const _ = {
 
     return newArr
   },
+
+  // filter()
+  filter: (array, predicate = _.identity) => {
+    let newArr = []
+
+    if (array) {
+      for (let i = 0; i < array.length; i++) {
+        if (predicate(array[i])) newArr[newArr.length] = array[i]
+      }
+    }
+
+    return newArr
+  },
 }
-// console.log(_.take([1, 2, 3, 4, 5, 6, 7], 6))
+
 module.exports = _
