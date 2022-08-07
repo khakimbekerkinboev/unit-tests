@@ -97,6 +97,27 @@ const _ = {
 
     return newArr
   },
+
+  // find()
+  find: (array, predicate = _.identity, fromIndex = 0) => {
+    let result
+
+    if (array) {
+      for (let i = fromIndex; i < array.length; i++) {
+        if (predicate(array[i])) {
+          result = array[i]
+          break
+        }
+      }
+    }
+
+    return result
+  },
+
+  // includes()
+  includes: () => {},
 }
+
+// console.log(_.find([1, 2, 3, 4, 5], (e) => e > 5))
 
 module.exports = _
