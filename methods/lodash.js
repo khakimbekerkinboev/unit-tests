@@ -68,11 +68,20 @@ const _ = {
 
     return newArr
   },
-
   // identity() assisting dropWhile()
   identity: (...args) => {
     return args[0]
   },
+
+  take: (array, n = 1) => {
+    let newArr = []
+
+    for (let i = 0; i < n; i++) {
+      if (array[i]) newArr[newArr.length] = array[i]
+    }
+
+    return newArr
+  },
 }
-console.log(_.dropWhile())
+// console.log(_.take([1, 2, 3, 4, 5, 6, 7], 6))
 module.exports = _

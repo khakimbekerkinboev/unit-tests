@@ -1,10 +1,5 @@
 const _ = require('../methods/lodash')
 
-//call the function without the second argument
-test('_.dropWhile([1, 2, 3, 4, 5, 6, 7]) to equal []', () => {
-  expect(_.dropWhile([1, 2, 3, 4, 5, 6, 7])).toEqual([])
-})
-
 // simple test
 test('_.dropWhile([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (e) => e < 5) to eqaul [5, 6, 7, 8 ,9]', () => {
   expect(_.dropWhile([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], (e) => e < 5)).toEqual([
@@ -19,6 +14,11 @@ test('_.dropWhile([1, 3, 4, 5, 5, 6], (e) => {return e != 5}) to equal [5, 5, 6]
       return e != 5
     })
   ).toEqual([5, 5, 6])
+})
+
+//call the function without the second argument
+test('_.dropWhile([1, 2, 3, 4, 5, 6, 7]) to equal []', () => {
+  expect(_.dropWhile([1, 2, 3, 4, 5, 6, 7])).toEqual([])
 })
 
 // test with falsy values
@@ -67,7 +67,7 @@ test("_.dropWhile([1, 2, 3, '', 4, 5, 6], (e) => e) to eqaul ['', 4, 5, 6]", () 
 })
 
 // test with truthy values
-test('', () => {
+test("_.dropWhile([true, {}, [], 42, '0', 'false',  -42, 3.14, -3.14, Infinity, -Infinity], (e) => e) to equal []", () => {
   expect(
     _.dropWhile(
       [true, {}, [], 42, '0', 'false', -42, 3.14, -3.14, Infinity, -Infinity],
