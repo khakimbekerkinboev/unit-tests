@@ -163,6 +163,28 @@ const _ = {
       return
     }
   },
+
+  // map()
+
+  map: (collection, iteratee = _.identity) => {
+    let newArr = []
+
+    if (collection instanceof Array) {
+      for (let i = 0; i < collection.length; i++) {
+        newArr[newArr.length] = iteratee(collection[i])
+      }
+    } else if (typeof collection == 'object' && collection !== null) {
+      const arrOfValues = Object.values(collection)
+
+      for (let i = 0; i < arrOfValues.length; i++) {
+        newArr[newArr.length] = iteratee(arrOfValues[i])
+      }
+    }
+
+    return newArr
+  },
 }
+
+console.log(_.map([1, 2, 3], (e) => e ** 2))
 
 module.exports = _
