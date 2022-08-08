@@ -115,9 +115,54 @@ const _ = {
   },
 
   // includes()
-  includes: () => {},
-}
+  includes: (collection, value, fromIndex = 0) => {
+    if (typeof collection === 'string' && value !== undefined) {
+      let flag = false
 
-// console.log(_.find([1, 2, 3, 4, 5], (e) => e > 5))
+      for (let i = fromIndex; i < collection.length; i++) {
+        if (collection[i] === value[0]) {
+          let subString = ''
+
+          for (let j = i; j < i + value.length; j++) {
+            subString += collection[j]
+          }
+
+          if (subString === value) {
+            flag = true
+          }
+        }
+      }
+
+      return flag
+    } else if (collection instanceof Array && value !== undefined) {
+      let flag = false
+
+      for (let i = fromIndex; i < collection.length; i++) {
+        if (collection[i] === value) {
+          flag = true
+        }
+      }
+
+      return flag
+    } else if (
+      typeof collection === 'object' &&
+      collection !== null &&
+      value !== undefined
+    ) {
+      let flag = false
+      const arrOfValues = Object.values(collection)
+
+      for (let i = fromIndex; i < arrOfValues.length; i++) {
+        if (arrOfValues[i] === value) {
+          flag = true
+        }
+      }
+
+      return flag
+    } else {
+      return
+    }
+  },
+}
 
 module.exports = _
