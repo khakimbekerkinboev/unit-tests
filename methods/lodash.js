@@ -165,7 +165,6 @@ const _ = {
   },
 
   // map()
-
   map: (collection, iteratee = _.identity) => {
     let newArr = []
 
@@ -183,8 +182,51 @@ const _ = {
 
     return newArr
   },
+
+  // zip()
+  zip: (...args) => {
+    // declare the result
+    let result = []
+
+    // get array of sub-array lengths
+    let arrOfLengths = []
+    for (let i = 0; i < args.length; i++) {
+      arrOfLengths[arrOfLengths.length] = args[i].length
+    }
+
+    // sort lengths in a descending order
+    for (let i = 0; i < arrOfLengths.length; i++) {
+      for (let j = i + 1; j < arrOfLengths.length; j++) {
+        if (arrOfLengths[i] < arrOfLengths[j]) {
+          let temp = arrOfLengths[i]
+          arrOfLengths[i] = arrOfLengths[j]
+          arrOfLengths[j] = temp
+        }
+      }
+    }
+
+    // get the length of the longest array
+    const longestArrLength = arrOfLengths[0]
+
+    // create the sub-arrays and push them to the main array
+    let currentIndex = 0
+    for (let i = 0; i < longestArrLength; i++) {
+      let newArr = []
+      for (let j = 0; j < args.length; j++) {
+        if (currentIndex < args[j].length) {
+          newArr[newArr.length] = args[j][currentIndex]
+        } else {
+          newArr[newArr.length] = null
+        }
+      }
+      result[result.length] = newArr
+      currentIndex++
+    }
+
+    return result
+  },
 }
 
-console.log(_.map([1, 2, 3], (e) => e ** 2))
+// console.log(_.zip(['a', 'b'], [1, 2], [true, false]))
 
 module.exports = _
