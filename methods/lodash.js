@@ -227,6 +227,4 @@ const _ = {
   },
 }
 
-// console.log(_.zip(['a', 'b'], [1, 2], [true, false]))
-
 module.exports = _
